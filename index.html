@@ -1,0 +1,73 @@
+<!-- Tailwind CDN for quick demo -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BHG Mining Company</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <!-- HERO SECTION -->
+  <section class="relative h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be');">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+      <h1 class="text-5xl md:text-6xl font-bold text-orange-500 animate-fadeInUp">MINING COMPANY</h1>
+      <p class="text-xl mt-4 text-gray-300 animate-fadeInUp delay-300">Leading the Way in Mineral Extraction</p>
+      <button class="mt-6 px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-all duration-300 animate-fadeInUp delay-500">Explore More</button>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="py-16 px-6 bg-gray-800">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">ABOUT US</h2>
+      <p class="text-gray-300 text-lg animate-fadeInUp delay-200">We are committed to safe, sustainable, and efficient mineral extraction, backed by years of expertise and industry innovation.</p>
+    </div>
+  </section>
+
+  <!-- OPERATIONS SECTION -->
+  <section class="py-16 px-6 bg-gray-900">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <img src="https://images.unsplash.com/photo-1607752882272-df7de66f3d8e" class="rounded-lg shadow-xl" alt="Operations">
+      <div>
+        <h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">OPERATIONS</h2>
+        <p class="text-gray-300 text-lg animate-fadeInUp delay-200">From exploration to export, we manage the full cycle of mineral operations with top-tier equipment and expert teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUSTAINABILITY SECTION -->
+  <section class="py-16 px-6 bg-gray-800">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">SUSTAINABILITY</h2>
+        <p class="text-gray-300 text-lg animate-fadeInUp delay-200">We invest in environmental conservation and community empowerment to ensure mining benefits all stakeholders responsibly.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1581093588401-1c29a9abf15e" class="rounded-lg shadow-xl" alt="Sustainability">
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-center text-gray-400 py-6">
+    &copy; 2025 BHG Mining Company. All rights reserved.
+  </footer>
+
+</body>
+</html>
