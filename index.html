@@ -1,73 +1,357 @@
-<!-- Tailwind CDN for quick demo -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BHG Mining Company</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>BHG Energy And Mining Limited</title>
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- JSVectorMap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/jsvectormap@latest/dist/css/jsvectormap.min.css" rel="stylesheet">
+	<style>
+		@keyframes fadeInUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px);
+			}
 
-    .animate-fadeInUp {
-      animation: fadeInUp 1s ease-out forwards;
-    }
-  </style>
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-fadeInUp {
+			animation: fadeInUp 1s ease-out forwards;
+		}
+
+		/* delay utilities */
+		.delay-200 {
+			animation-delay: 0.2s;
+		}
+
+		.delay-300 {
+			animation-delay: 0.3s;
+		}
+
+		.delay-500 {
+			animation-delay: 0.5s;
+		}
+
+		/* Navigation Bar Style */
+		.navbar {
+			transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.navbar-scrolled {
+			background-color: #1f2937;
+			/* Tailwind gray-800 */
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		#tanzania-map {
+			height: 1000px !important;
+			width: 100%;
+		}
+	</style>
 </head>
+
 <body class="bg-gray-900 text-white font-sans">
+	<!-- NAVIGATION BAR -->
+	<nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 bg-transparent">
+		<div class="flex items-center justify-between">
+			<a href="#" class="text-3xl font-bold text-orange-500">BHG Limited</a>
+			<ul class="flex space-x-8 text-gray-300">
+				<li><a href="#" class="hover:text-orange-500 transition">Home</a></li>
+				<li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
+				<li><a href="mines.html" class="hover:text-orange-500 transition">Mines</a></li>
+				<li><a href="investors.html" class="hover:text-orange-500 transition">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
 
-  <!-- HERO SECTION -->
-  <section class="relative h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be');">
-    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
-      <h1 class="text-5xl md:text-6xl font-bold text-orange-500 animate-fadeInUp">MINING COMPANY</h1>
-      <p class="text-xl mt-4 text-gray-300 animate-fadeInUp delay-300">Leading the Way in Mineral Extraction</p>
-      <button class="mt-6 px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-all duration-300 animate-fadeInUp delay-500">Explore More</button>
-    </div>
-  </section>
+	<!-- HERO SECTION -->
+	<section class="relative h-screen bg-cover bg-center"
+		style="background-image: url('images/roads-to-mines.jpg');">
+		<div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+			<h1 class="text-5xl md:text-6xl font-bold text-orange-500 animate-fadeInUp">BHG ENERGU & MINING LIMITED</h1>
+			<p class="text-xl mt-4 text-gray-300 animate-fadeInUp delay-300">UNEARTHING EXCELLENCE, DELIVERING VALUE</p>
+			<button
+				class="mt-6 px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-all duration-300 animate-fadeInUp delay-500">Explore
+				More</button>
+		</div>
+	</section>
 
-  <!-- ABOUT SECTION -->
-  <section class="py-16 px-6 bg-gray-800">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">ABOUT US</h2>
-      <p class="text-gray-300 text-lg animate-fadeInUp delay-200">We are committed to safe, sustainable, and efficient mineral extraction, backed by years of expertise and industry innovation.</p>
-    </div>
-  </section>
+	<!-- ABOUT SECTION -->
+	<section class="py-16 px-6 bg-gray-800">
+		<div class="max-w-6xl mx-auto text-center">
+			<h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">ABOUT US</h2>
+			<p class="text-gray-300 text-lg animate-fadeInUp delay-200">We are committed to safe, sustainable, and
+				efficient
+				mineral extraction, backed by years of expertise and industry innovation.</p>
+		</div>
+	</section>
 
-  <!-- OPERATIONS SECTION -->
-  <section class="py-16 px-6 bg-gray-900">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <img src="https://images.unsplash.com/photo-1607752882272-df7de66f3d8e" class="rounded-lg shadow-xl" alt="Operations">
-      <div>
-        <h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">OPERATIONS</h2>
-        <p class="text-gray-300 text-lg animate-fadeInUp delay-200">From exploration to export, we manage the full cycle of mineral operations with top-tier equipment and expert teams.</p>
-      </div>
-    </div>
-  </section>
+	<!-- OPERATIONS SECTION -->
+	<section class="py-16 px-6 bg-gray-900">
+		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+			<img src="images/ore-hauriers.avif" class="rounded-lg shadow-xl" alt="Operations">
+			<div>
+				<h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">OPERATIONS</h2>
+				<p class="text-gray-300 text-lg animate-fadeInUp delay-200">From exploration to export, we manage the
+					full cycle
+					of mineral operations with top-tier equipment and expert teams.</p>
+			</div>
+		</div>
+	</section>
 
-  <!-- SUSTAINABILITY SECTION -->
-  <section class="py-16 px-6 bg-gray-800">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">SUSTAINABILITY</h2>
-        <p class="text-gray-300 text-lg animate-fadeInUp delay-200">We invest in environmental conservation and community empowerment to ensure mining benefits all stakeholders responsibly.</p>
-      </div>
-      <img src="https://images.unsplash.com/photo-1581093588401-1c29a9abf15e" class="rounded-lg shadow-xl" alt="Sustainability">
-    </div>
-  </section>
+	<!-- SUSTAINABILITY SECTION -->
+	<section class="py-16 px-6 bg-gray-800">
+		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+			<div>
+				<h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">SUSTAINABILITY</h2>
+				<p class="text-gray-300 text-lg animate-fadeInUp delay-200">We invest in environmental conservation and
+					community empowerment to ensure mining benefits all stakeholders responsibly.</p>
+			</div>
+			<img src="images/mining-rig-through-a-turnel.jpg" class="rounded-lg shadow-xl" alt="Sustainability">
+		</div>
+	</section>
+	<div class="max-w-6xl mx-auto px-4 py-12">
+		<!-- Section Heading -->
+		<h1 class="text-3xl font-bold text-white mb-6">Sustainability</h1>
 
-  <!-- FOOTER -->
-  <footer class="bg-black text-center text-gray-400 py-6">
-    &copy; 2025 BHG Mining Company. All rights reserved.
-  </footer>
+		<!-- Content Container -->
+		<div class="flex flex-col md:flex-row gap-8">
+			<!-- Text Content -->
+			<div class="flex-1">
+				<p class="text-white mb-6 text-lg leading-relaxed animate-fadeInUp">
+					BHG Energy & minerals Limited under value-based principles of excellence, personal accountability,
+					integrity and social and environmental responsibility. Our commitment to responsible exploration and
+					mine development underlies our strategic vision, striving to ensure that social and economic
+					benefits are shared widely through community enhancement initiatives and stakeholder agreements with
+					host communities, local entrepreneurs and employees.
+				</p>
+
+				<!-- Divider -->
+				<div class="border-t border-gray-200 my-6"></div>
+
+				<!-- Buttons -->
+				<div class="flex flex-col sm:flex-row gap-4">
+					<a href="#"
+						class="px-6 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition-colors text-center">
+						View Latest Report
+					</a>
+					<a href="#"
+						class="px-6 py-2 border border-blue-600 text-blue-600 font-medium rounded hover:bg-blue-50 transition-colors text-center">
+						Learn More →
+					</a>
+				</div>
+			</div>
+
+			<!-- Image Placeholder - Replace with your actual image -->
+			<div class="flex-1">
+				<img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+					alt="Sustainability in action" class="w-full h-auto rounded-lg object-cover shadow-md">
+			</div>
+		</div>
+	</div>
+
+	<section class="relative h-[1000px]">
+		<!-- MAP BACKGROUND -->
+		<div id="tanzania-map" class="absolute inset-0"></div>
+
+		<!-- FOREGROUND MINE LIST -->
+		<div class="relative max-w-4xl mx-auto mt-[-800px] py-20 px-6 text-white">
+			<h2 class="text-3xl font-bold text-orange-400 mb-6">Our Mines</h2>
+			<ul id="mine-list" class="space-y-4 text-lg">
+				<li data-name="Bulyanhulu Gold Mine" data-lat="-3.3869" data-lng="31.7167"
+					data-desc="Located in Shinyanga Region. Underground mine.">
+					<span class="hover:underline cursor-pointer">Katavi Mpanda Projects</span>
+				</li>
+				<li data-name="North Mara Gold Mine" data-lat="-1.5110" data-lng="34.4211"
+					data-desc="Open-pit mine in Tarime.">
+					<span class="hover:underline cursor-pointer">Mbwemkuru Alluvial Gold</span>
+				</li>
+				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
+					data-desc="One of the largest gold mines in Africa.">
+					<span class="hover:underline cursor-pointer">Mpanda Project Finalisation</span>
+				</li>
+				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
+					data-desc="One of the largest gold mines in Africa.">
+					<span class="hover:underline cursor-pointer">Mtandi Cement and Clinker Project</span>
+				</li>
+				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
+					data-desc="One of the largest gold mines in Africa.">
+					<span class="hover:underline cursor-pointer">Matapwa Pazzolana</span>
+				</li>
+				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
+					data-desc="One of the largest gold mines in Africa.">
+					<span class="hover:underline cursor-pointer">Limestone Kitumbini PMLs</span>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+
+	<!-- FOOTER -->
+	<footer class="bg-gray-900 text-gray-300 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-7xl mx-auto">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+				<!-- Company Info -->
+				<div class="space-y-4">
+					<div class="flex items-center">
+						<span class="text-3xl font-bold text-amber-500">BHG</span>
+						<span class="ml-2 text-sm font-semibold uppercase text-white">ENERGY AND MINERALS LIMITED</span>
+					</div>
+					<p class="italic text-gray-400">"UNEARTHING EXCELLENCE, DELIVERING VALUE"</p>
+
+					<div class="flex space-x-4 pt-2">
+						<a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+							<i class="fab fa-linkedin-in text-lg"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+							<i class="fab fa-twitter text-lg"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+							<i class="fab fa-facebook-f text-lg"></i>
+						</a>
+					</div>
+				</div>
+
+				<!-- Quick Links -->
+				<div class="space-y-4">
+					<h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Quick Links</h3>
+					<ul class="space-y-2">
+						<li><a href="#our-story" class="hover:text-amber-500 transition-colors">Our Story</a></li>
+						<li><a href="#mission-vision" class="hover:text-amber-500 transition-colors">Mission &
+								Vision</a></li>
+						<li><a href="#core-services" class="hover:text-amber-500 transition-colors">Services</a></li>
+						<li><a href="#our-projects" class="hover:text-amber-500 transition-colors">Projects</a></li>
+						<li><a href="#our-team" class="hover:text-amber-500 transition-colors">Our Team</a></li>
+					</ul>
+				</div>
+
+				<!-- Services -->
+				<div class="space-y-4">
+					<h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Our Services</h3>
+					<ul class="space-y-2">
+						<li><a href="#" class="hover:text-amber-500 transition-colors">Energy Resources</a></li>
+						<li><a href="#" class="hover:text-amber-500 transition-colors">Mineral Exploration</a></li>
+						<li><a href="#" class="hover:text-amber-500 transition-colors">Surveying Services</a></li>
+						<li><a href="#" class="hover:text-amber-500 transition-colors">Fieldwork</a></li>
+						<li><a href="#" class="hover:text-amber-500 transition-colors">Mapping Solutions</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact -->
+				<div class="space-y-4">
+					<h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Contact Us</h3>
+					<address class="not-italic space-y-3">
+						<div class="flex items-start">
+							<i class="fas fa-map-marker-alt mt-1 mr-3 text-amber-500"></i>
+							<p>Tours drive, Mosasani Peninsula<br>Dor es salaam</p>
+						</div>
+						<div class="flex items-center">
+							<i class="fas fa-phone mr-3 text-amber-500"></i>
+							<p>+255 755530058</p>
+						</div>
+						<div class="flex items-center">
+							<i class="fas fa-envelope mr-3 text-amber-500"></i>
+							<a href="mailto:tumba@bhig.co.tr"
+								class="hover:text-amber-500 transition-colors">tumba@bhig.co.tr</a>
+						</div>
+						<div class="flex items-center">
+							<i class="fas fa-globe mr-3 text-amber-500"></i>
+							<a href="https://www.bhig.co.tr" target="_blank"
+								class="hover:text-amber-500 transition-colors">www.bhig.co.tr</a>
+						</div>
+					</address>
+				</div>
+			</div>
+
+			<!-- Bottom Bar -->
+			<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+				<p class="text-sm text-gray-500 mb-4 md:mb-0">&copy; 2025 BHG Energy and Minerals Limited. All rights
+					reserved.</p>
+				<div class="flex space-x-4">
+					<a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Privacy Policy</a>
+					<a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Terms of
+						Service</a>
+					<a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Sitemap</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- JSVectorMap Scripts --><!-- JSVectorMap CSS & JS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/css/jsvectormap.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/js/jsvectormap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/maps/world.min.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const map = new jsVectorMap({
+				selector: "#tanzania-map",
+				map: "world",
+				zoomButtons: true,
+				selectedRegions: ['TZ'],
+				markers: [
+					{
+						name: "Bulyanhulu Gold Mine",
+						coords: [-3.3869, 31.7167],
+						info: "Underground gold mine in Shinyanga Region. Owned by Barrick Gold. Opened in 2001."
+					},
+					{
+						name: "North Mara Gold Mine",
+						coords: [-1.5110, 34.4211],
+						info: "Located in Tarime District. Open-pit and underground operations. Known for significant reserves."
+					},
+					{
+						name: "Geita Gold Mine",
+						coords: [-2.8722, 32.2306],
+						info: "One of Africa’s biggest gold mines. Operated by AngloGold Ashanti. Produces over 500k oz annually."
+					}
+				],
+
+
+				markerStyle: {
+					initial: {
+						fill: "#f97316", // Tailwind orange-500
+						stroke: "#fff",
+						r: 7
+					}
+				},
+				regionStyle: {
+					initial: {
+						fill: "#4b5563", // Tailwind gray-700
+						stroke: "#1f2937"
+					},
+					selected: {
+						fill: "#f97316" // Highlight Tanzania
+					}
+				},
+				zoomOnScroll: false,
+				focusOn: {
+					region: 'TZ',
+					animate: true
+				}
+			});
+
+
+			const navbar = document.querySelector('.navbar');
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 50) {
+					navbar.classList.add('navbar-scrolled');
+				} else {
+					navbar.classList.remove('navbar-scrolled');
+				}
+			});
+		});
+	</script>
+
+
 
 </body>
+
 </html>

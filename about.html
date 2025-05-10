@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - BHG Energy And Mining Limited</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        /* delay utilities */
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+        
+        /* Navigation Bar Style */
+        .navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .navbar-scrolled {
+            background-color: #1f2937;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1605100804763-247f67b3557e') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 bg-transparent">
+        <div class="flex items-center justify-between">
+            <a href="index.html" class="text-3xl font-bold text-orange-500">BHG Limited</a>
+            <ul class="flex space-x-8 text-gray-300">
+                <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
+                <li><a href="about.html" class="text-orange-500 font-medium">About</a></li>
+                <li><a href="mines.html" class="hover:text-orange-500 transition">Mines</a></li>
+                <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="about-hero relative h-96 flex items-center pt-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-orange-500 animate-fadeInUp">About BHG</h1>
+            <p class="text-xl mt-4 text-gray-300 animate-fadeInUp delay-300">Our story, mission, and values</p>
+        </div>
+    </section>
+
+    <!-- OUR STORY SECTION -->
+    <section class="py-16 px-6 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-8 text-center animate-fadeInUp">Our Story</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fadeInUp delay-200">
+                    <h3 class="text-2xl font-semibold mb-4">Company Overview</h3>
+                    <p class="text-gray-300 mb-4">BHG Energy and Minerals Limited is established to undertake targeted services in the mineral resources and mining sector. The company's philosophy is to develop projects from grassroots exploration plays to operating mines to high-end downstream producers.</p>
+                    <p class="text-gray-300">We follow an aggressive, fair market services approach to ensure value for our clients while maintaining the highest standards of environmental responsibility and community engagement.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789" alt="Mining operation" class="rounded-lg shadow-xl animate-fadeInUp delay-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION & VISION SECTION -->
+    <section class="py-16 px-6 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-12 text-center animate-fadeInUp">Our Mission & Vision</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Mission Card -->
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg animate-fadeInUp delay-200">
+                    <div class="text-orange-500 text-4xl mb-4">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Mission Statement</h3>
+                    <p class="text-gray-300">At BHG Energy and Minerals Limited, our mission is to harness the power of natural resources responsibly and sustainably. We strive to contribute to global energy needs while minimizing environmental impact, fostering community development, and adhering to the highest industry standards.</p>
+                </div>
+                
+                <!-- Vision Card -->
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg animate-fadeInUp delay-300">
+                    <div class="text-orange-500 text-4xl mb-4">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Our Vision</h3>
+                    <p class="text-gray-300">To be Africa's premier energy and minerals company, recognized for operational excellence, environmental stewardship, and positive community impact. We envision a future where resource development creates sustainable value for all stakeholders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES SECTION -->
+    <section class="py-16 px-6 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-12 text-center animate-fadeInUp">Our Core Values</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="text-center animate-fadeInUp delay-200">
+                    <div class="bg-orange-500 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Safety First</h3>
+                    <p class="text-gray-300">We prioritize the health and safety of our employees, contractors, and communities above all else.</p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="text-center animate-fadeInUp delay-300">
+                    <div class="bg-orange-500 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-leaf text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Environmental Stewardship</h3>
+                    <p class="text-gray-300">We are committed to minimizing our environmental footprint and rehabilitating land affected by our operations.</p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="text-center animate-fadeInUp delay-500">
+                    <div class="bg-orange-500 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Community Partnership</h3>
+                    <p class="text-gray-300">We engage with local communities to create shared value through employment, education, and infrastructure development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="py-16 px-6 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-12 text-center animate-fadeInUp">Our Leadership Team</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg animate-fadeInUp delay-200">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Tumbo Damian" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold">Tumbo Damian</h3>
+                        <p class="text-orange-500 mb-3">Chief Executive Officer</p>
+                        <p class="text-gray-300 text-sm">With over 15 years in the industry, Tumbo leads with a vision for innovative Energy and Mining solutions.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg animate-fadeInUp delay-300">
+                    <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Howard Ong" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold">Howard Ong</h3>
+                        <p class="text-orange-500 mb-3">Project Manager</p>
+                        <p class="text-gray-300 text-sm">Highly skilled and motivated legal professional with wealth of experience in various aspects of law.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg animate-fadeInUp delay-500">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Awiti Obalia" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold">Awiti Obalia</h3>
+                        <p class="text-orange-500 mb-3">Operations Manager</p>
+                        <p class="text-gray-300 text-sm">A seasoned professional responsible for overseeing complex mining projects from inception through to completion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Same as homepage) -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-3xl font-bold text-amber-500">BHG</span>
+                        <span class="ml-2 text-sm font-semibold uppercase text-white">ENERGY AND MINERALS LIMITED</span>
+                    </div>
+                    <p class="italic text-gray-400">"UNEARTHING EXCELLENCE, DELIVERING VALUE"</p>
+                    
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-amber-500 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-amber-500 transition-colors">About</a></li>
+                        <li><a href="mines.html" class="hover:text-amber-500 transition-colors">Mines</a></li>
+                        <li><a href="contact.html" class="hover:text-amber-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Energy Resources</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Mineral Exploration</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Surveying Services</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Fieldwork</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Contact Us</h3>
+                    <address class="not-italic space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-amber-500"></i>
+                            <p>Tours drive, Mosasani Peninsula<br>Dor es salaam</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-amber-500"></i>
+                            <p>+255 755530058</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-amber-500"></i>
+                            <a href="mailto:tumba@bhig.co.tr" class="hover:text-amber-500 transition-colors">tumba@bhig.co.tr</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-globe mr-3 text-amber-500"></i>
+                            <a href="https://www.bhig.co.tr" target="_blank" class="hover:text-amber-500 transition-colors">www.bhig.co.tr</a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">&copy; 2025 BHG Energy and Minerals Limited. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
