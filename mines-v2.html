@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Mines - BHG Energy And Mining</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- amCharts Resources -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/tanzaniaLow.js"></script>
+    <style>
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        /* delay utilities */
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+        
+        /* Navigation Bar Style */
+        .navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .navbar-scrolled {
+            background-color: #1f2937;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Hero Section */
+        .mines-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789') no-repeat center center;
+            background-size: cover;
+        }
+        
+        /* Map Container */
+        #tanzania-map {
+            height: 600px;
+            width: 100%;
+            background-color: #1f2937;
+        }
+        
+        /* Mine Card */
+        .mine-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .mine-card:hover {
+            transform: translateY(-5px);
+            border-left-color: #f97316;
+        }
+        .mine-card.active {
+            border-left-color: #f97316;
+            background-color: #1f2937;
+        }
+        
+        /* Mineral Badges */
+        .mineral-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .gold-badge { background-color: #fde047; color: #854d0e; }
+        .limestone-badge { background-color: #d1d5db; color: #374151; }
+        .cement-badge { background-color: #a5b4fc; color: #3730a3; }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 bg-transparent">
+        <div class="flex items-center justify-between">
+            <a href="index.html" class="text-3xl font-bold text-orange-500">BHG</a>
+            <ul class="flex space-x-8 text-gray-300">
+                <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
+                <li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
+                <li><a href="mines.html" class="text-orange-500 font-medium">Mines</a></li>
+                <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="mines-hero relative h-96 flex items-center pt-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-orange-500 animate-fadeInUp">Our Mining Projects</h1>
+            <p class="text-xl mt-4 text-gray-300 animate-fadeInUp delay-300">Strategic mineral assets across Tanzania</p>
+        </div>
+    </section>
+
+    <!-- MINES OVERVIEW SECTION -->
+    <section class="py-16 px-6 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-8 text-center animate-fadeInUp">BHG Mineral Portfolio</h2>
+            <p class="text-gray-300 text-lg text-center max-w-3xl mx-auto mb-12 animate-fadeInUp delay-200">
+                BHG Energy and Minerals operates and manages a diverse portfolio of mining projects across Tanzania, 
+                specializing in gold, limestone, and industrial minerals that drive economic growth.
+            </p>
+            
+            <!-- Stats Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-gray-700 p-6 rounded-lg text-center animate-fadeInUp delay-300">
+                    <div class="text-orange-500 text-4xl mb-3">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">6</h3>
+                    <p class="text-gray-300">Active Projects</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg text-center animate-fadeInUp delay-400">
+                    <div class="text-orange-500 text-4xl mb-3">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">3+</h3>
+                    <p class="text-gray-300">Regions in Tanzania</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg text-center animate-fadeInUp delay-500">
+                    <div class="text-orange-500 text-4xl mb-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">500+</h3>
+                    <p class="text-gray-300">Employees & Contractors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP AND MINE LIST SECTION -->
+    <section class="py-16 px-6 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-12 text-center animate-fadeInUp">Project Locations</h2>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Mine List -->
+                <div class="lg:col-span-1 animate-fadeInUp delay-200">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-3">All Projects</h3>
+                        <div class="space-y-4" id="mine-list">
+                            <!-- Katavi Mpanda -->
+                            <div class="mine-card bg-gray-700 p-4 rounded cursor-pointer active" 
+                                data-mine="katavi" data-lat="-6.4667" data-lng="31.0333">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Katavi Mpanda Projects</h4>
+                                        <span class="gold-badge mineral-badge">Gold</span>
+                                    </div>
+                                    <span class="text-orange-500 text-sm">Active</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2">Katavi Region, Western Tanzania</p>
+                            </div>
+                            
+                            <!-- Mbwemkuru -->
+                            <div class="mine-card bg-gray-700 p-4 rounded cursor-pointer" 
+                                data-mine="mbwemkuru" data-lat="-7.9167" data-lng="31.3333">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Mbwemkuru Alluvial Gold</h4>
+                                        <span class="gold-badge mineral-badge">Gold</span>
+                                    </div>
+                                    <span class="text-orange-500 text-sm">Active</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2">Ruvuma Region, Southern Tanzania</p>
+                            </div>
+                            
+                            <!-- Mpanda -->
+                            <div class="mine-card bg-gray-700 p-4 rounded cursor-pointer" 
+                                data-mine="mpanda" data-lat="-6.3436" data-lng="31.0694">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Mpanda Project Finalisation</h4>
+                                        <span class="gold-badge mineral-badge">Gold</span>
+                                    </div>
+                                    <span class="text-blue-400 text-sm">Development</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2">Katavi Region, Western Tanzania</p>
+                            </div>
+                            
+                            <!-- Mtandi Cement -->
+                            <div class="mine-card bg-gray-700 p-4 rounded cursor-pointer" 
+                                data-mine="mtandi" data-lat="-5.0833" data-lng="39.1000">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Mtandi Cement and Clinker Project</h4>
+                                        <span class="cement-badge mineral-badge">Cement</span>
+                                        <span class="limestone-badge mineral-badge ml-1">Limestone</span>
+                                    </div>
+                                    <span class="text-green-400 text-sm">Expanding</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2">Tanga Region, Northeast Tanzania</p>
+                            </div>
+                            
+                            <!-- Matapwa -->
+                            <div class="mine-card bg-gray-700 p-4 rounded cursor-pointer" 
+                                data-mine="matapwa" data-lat="-6.1500" data-lng="35.7500">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Matapwa Pozzolana</h4>
+                                        <span class="limestone-badge mineral-badge">Pozzolana</span>
+                                    </div>
+                                    <span class="text-orange-500 text-sm">Active</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2">Dodoma Region, Central Tanzania</p>
+                            </div>
+                            
+                            <!-- Kitumbini -->
+                            <div class="mine-card bg-gray-700 p-4 rounded cursor-pointer" 
+                                data-mine="kitumbini" data-lat="-6.8000" data-lng="39.2500">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-lg">Limestone Kitumbini PMLs</h4>
+                                        <span class="limestone-badge mineral-badge">Limestone</span>
+                                    </div>
+                                    <span class="text-blue-400 text-sm">Exploration</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2">Coast Region, Eastern Tanzania</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Container -->
+                <div class="lg:col-span-2 animate-fadeInUp delay-300">
+                    <div class="bg-gray-800 p-4 rounded-lg shadow-lg h-full">
+                        <div id="tanzania-map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINE DETAILS SECTION -->
+    <section class="py-16 px-6 bg-gray-800" id="mine-details">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-orange-400 mb-12 text-center">Project Details</h2>
+            
+            <!-- Katavi Mpanda Details (default visible) -->
+            <div class="mine-detail" id="katavi-detail">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Katavi Mpanda Projects</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="gold-badge mineral-badge mr-2">Gold</span>
+                            <span class="text-orange-500 text-sm font-medium">Active Production</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            The Katavi Mpanda Projects represent BHG's flagship gold mining operations in western Tanzania. 
+                            Located in the mineral-rich Katavi Region, these projects include both open-pit and underground operations.
+                        </p>
+                        <ul class="text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Established reserves of 2.1 million ounces</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Annual production capacity of 150,000 ounces</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>State-of-the-art processing plant with 95% recovery rate</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition">
+                            View Project Report
+                        </a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e" alt="Katavi Mpanda Mine" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+            
+            <!-- Other mine details (hidden by default) -->
+            <div class="mine-detail hidden" id="mbwemkuru-detail">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Mbwemkuru Alluvial Gold</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="gold-badge mineral-badge mr-2">Gold</span>
+                            <span class="text-orange-500 text-sm font-medium">Active Production</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            The Mbwemkuru project focuses on alluvial gold deposits in the Ruvuma Region of southern Tanzania,
+                            utilizing environmentally responsible mining techniques to recover gold from river sediments.
+                        </p>
+                        <ul class="text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>High-grade alluvial deposits averaging 1.5-3.0g/m³</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Low-cost production with minimal environmental impact</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Community development programs in place</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition">
+                            View Project Report
+                        </a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e" alt="Mbwemkuru Mine" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+            
+            <div class="mine-detail hidden" id="mpanda-detail">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Mpanda Project Finalisation</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="gold-badge mineral-badge mr-2">Gold</span>
+                            <span class="text-blue-400 text-sm font-medium">Development Phase</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            The Mpanda Project is in its final development phase, with exploration confirming significant gold deposits
+                            in the Katavi Region. The project is expected to begin production in the next 18 months.
+                        </p>
+                        <ul class="text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Indicated resources of 1.8 million ounces</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Permitting and environmental approvals in progress</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Expected mine life of 12+ years</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition">
+                            View Project Report
+                        </a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1601484479547-957e9a5e0bcb" alt="Mpanda Project" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+            
+            <!-- Additional mine details would follow same pattern -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-3xl font-bold text-amber-500">BHG</span>
+                        <span class="ml-2 text-sm font-semibold uppercase text-white">ENERGY AND MINERALS</span>
+                    </div>
+                    <p class="italic text-gray-400">"UNEARTHING EXCELLENCE, DELIVERING VALUE"</p>
+                    
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-amber-500 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-amber-500 transition-colors">About</a></li>
+                        <li><a href="mines.html" class="hover:text-amber-500 transition-colors">Mines</a></li>
+                        <li><a href="contact.html" class="hover:text-amber-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Mineral Exploration</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Mine Development</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Resource Management</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Contact Us</h3>
+                    <address class="not-italic space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-amber-500"></i>
+                            <p>Tours drive, Mosasani Peninsula<br>Dor es salaam</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-amber-500"></i>
+                            <p>+255 755530058</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-amber-500"></i>
+                            <a href="mailto:tumbo@bhg.co.tz" class="hover:text-amber-500 transition-colors">tumbo@bhg.co.tz</a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">&copy; 2025 BHG Energy and Minerals. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+
+            // Mine selection functionality
+            const mineCards = document.querySelectorAll('.mine-card');
+            const mineDetails = document.querySelectorAll('.mine-detail');
+            
+            // Initialize amCharts map
+            am5.ready(function() {
+                var root = am5.Root.new("tanzania-map");
+                root.setThemes([am5themes_Animated.new(root)]);
+                
+                var chart = root.container.children.push(am5map.MapChart.new(root, {
+                    panX: "rotateX",
+                    projection: am5map.geoMercator(),
+                    // Disable zoom settings:
+                    wheelY: "none",
+                    pinchZoom: false,
+                    maxZoomLevel: 1,
+                    minZoomLevel: 1
+                }));
+
+                // Create polygon series for Tanzania
+                var tanzaniaSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+                    geoJSON: am5geodata_tanzaniaLow,
+                    fill: am5.color(0x4b5563), // gray-600
+                    stroke: am5.color(0x1f2937) // gray-800
+                }));
+
+                // Configure series
+                tanzaniaSeries.mapPolygons.template.setAll({
+                    tooltipText: "{name}",
+                    interactive: true,
+                    templateField: "polygonSettings"
+                });
+
+                // Highlight Katavi region (where Mpanda is located)
+                tanzaniaSeries.data.setAll(
+                    tanzaniaSeries.get("geoJSON").features.map(feature => {
+                        if (feature.properties.name.toLowerCase() === "katavi") {
+                            return {
+                                id: feature.id,
+                                name: feature.properties.name,
+                                polygonSettings: {
+                                    fill: am5.color(0xf97316), // orange-500
+                                    stroke: am5.color(0xffffff),
+                                    fillOpacity: 0.7
+                                }
+                            };
+                        }
+                        return {
+                            id: feature.id,
+                            name: feature.properties.name
+                        };
+                    })
+                );
+
+                // Add point series for mines
+                var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+                
+                pointSeries.bullets.push(function() {
+                    var container = am5.Container.new(root, {});
+                    
+                    var circle = container.children.push(am5.Circle.new(root, {
+                        radius: 8,
+                        fill: am5.color(0xf97316), // orange-500
+                        stroke: am5.color(0xffffff),
+                        strokeWidth: 2,
+                        tooltipText: "{title}\n{description}"
+                    }));
+                    
+                    var label = container.children.push(am5.Label.new(root, {
+                        text: "{name}",
+                        paddingLeft: 15,
+                        fill: am5.color(0xffffff),
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        centerY: am5.p50,
+                        populateText: true
+                    }));
+                    
+                    return am5.Bullet.new(root, {
+                        sprite: container
+                    });
+                });
+
+                // Add mine data
+                pointSeries.data.setAll([
+                    {
+                        id: "katavi",
+                        title: "Katavi Mpanda Projects",
+                        name: "KATAVI",
+                        description: "Flagship gold mining operations in western Tanzania",
+                        geometry: { type: "Point", coordinates: [31.0333, -6.4667] }
+                    },
+                    {
+                        id: "mbwemkuru",
+                        title: "Mbwemkuru Alluvial Gold",
+                        name: "MBWEMKURU",
+                        description: "Alluvial gold deposits in Ruvuma Region",
+                        geometry: { type: "Point", coordinates: [31.3333, -7.9167] }
+                    },
+                    {
+                        id: "mpanda",
+                        title: "Mpanda Project Finalisation",
+                        name: "MPANDA",
+                        description: "Gold project in final development phase",
+                        geometry: { type: "Point", coordinates: [31.0694, -6.3436] }
+                    },
+                    {
+                        id: "mtandi",
+                        title: "Mtandi Cement and Clinker Project",
+                        name: "MTANDI",
+                        description: "Cement and clinker production facility",
+                        geometry: { type: "Point", coordinates: [39.1000, -5.0833] }
+                    },
+                    {
+                        id: "matapwa",
+                        title: "Matapwa Pozzolana",
+                        name: "MATAPWA",
+                        description: "Pozzolana mining operation",
+                        geometry: { type: "Point", coordinates: [35.7500, -6.1500] }
+                    },
+                    {
+                        id: "kitumbini",
+                        title: "Limestone Kitumbini PMLs",
+                        name: "KITUMBINI",
+                        description: "Limestone exploration licenses",
+                        geometry: { type: "Point", coordinates: [39.2500, -6.8000] }
+                    }
+                ]);
+
+                // Mine card click handler
+                mineCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Remove active class from all cards
+                        mineCards.forEach(c => c.classList.remove('active'));
+                        // Add active class to clicked card
+                        this.classList.add('active');
+                        
+                        // Get mine ID from data attribute
+                        const mineId = this.getAttribute('data-mine');
+                        
+                        // Hide all details
+                        mineDetails.forEach(detail => detail.classList.add('hidden'));
+                        // Show selected detail
+                        document.getElementById(`${mineId}-detail`).classList.remove('hidden');
+                        
+                        // Center map on this mine
+                        const lat = parseFloat(this.getAttribute('data-lat'));
+                        const lng = parseFloat(this.getAttribute('data-lng'));
+                        
+                        // Convert to proper coordinates format
+                        const mineData = pointSeries.getDataItemById(mineId);
+                        if (mineData) {
+                            const animation = am5.Animation.new(root, {
+                                to: { rotationX: -lat, rotationY: -lng },
+                                duration: 1000
+                            });
+                            animation.start();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
