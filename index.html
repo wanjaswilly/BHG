@@ -2,356 +2,901 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>BHG Energy And Mining</title>
-	<!-- Tailwind CSS -->
-	<script src="https://cdn.tailwindcss.com"></script>
-	<!-- JSVectorMap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/jsvectormap@latest/dist/css/jsvectormap.min.css" rel="stylesheet">
-	<style>
-		@keyframes fadeInUp {
-			0% {
-				opacity: 0;
-				transform: translateY(20px);
-			}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BHG Energy And Minerals | Sustainable Mining in Tanzania</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- JSVectorMap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/jsvectormap@latest/dist/css/jsvectormap.min.css" rel="stylesheet">
+    <!-- Splide.js for galleries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <style>
+        /* Custom Fonts */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
 
-			100% {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
 
-		.animate-fadeInUp {
-			animation: fadeInUp 1s ease-out forwards;
-		}
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-		/* delay utilities */
-		.delay-200 {
-			animation-delay: 0.2s;
-		}
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-		.delay-300 {
-			animation-delay: 0.3s;
-		}
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
 
-		.delay-500 {
-			animation-delay: 0.5s;
-		}
+            50% {
+                transform: translateY(-10px);
+            }
 
-		/* Navigation Bar Style */
-		.navbar {
-			transition: background-color 0.3s ease, box-shadow 0.3s ease;
-		}
+            100% {
+                transform: translateY(0px);
+            }
+        }
 
-		.navbar-scrolled {
-			background-color: #1f2937;
-			/* Tailwind gray-800 */
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		}
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
 
-		#tanzania-map {
-			height: 1000px !important;
-			width: 100%;
-		}
-	</style>
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* delay utilities */
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        /* Navigation Bar Style */
+        .navbar {
+            transition: all 0.5s ease;
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 24, 39, 0.8) 0%, rgba(124, 58, 237, 0.4) 100%);
+        }
+
+        /* Mineral Cards */
+        .mineral-card {
+            transition: all 0.3s ease;
+        }
+
+        .mineral-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f97316;
+            border-radius: 4px;
+        }
+
+        /* Map Container */
+        #tanzania-map {
+            height: 1000px;
+            width: 100%;
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* Custom styles to enhance the masonry effect */
+        #masonry-gallery {
+            display: grid;
+            grid-auto-rows: minmax(200px, auto);
+        }
+
+        @media (min-width: 640px) {
+            #masonry-gallery {
+                grid-auto-rows: minmax(250px, auto);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #masonry-gallery {
+                grid-auto-rows: minmax(300px, auto);
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-900 text-white font-sans">
-	<!-- NAVIGATION BAR -->
-	<nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 bg-transparent">
-		<div class="flex items-center justify-between">
-			<a href="#" class="text-3xl font-bold text-orange-500">BHG</a>
-			<ul class="flex space-x-8 text-gray-300">
-				<li><a href="#" class="hover:text-orange-500 transition">Home</a></li>
-				<li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
-				<li><a href="mines.html" class="hover:text-orange-500 transition">Mines</a></li>
-				<li><a href="investors.html" class="hover:text-orange-500 transition">Contact</a></li>
-			</ul>
-		</div>
-	</nav>
+<body class="bg-gray-900 text-white">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 lg:px-12 bg-transparent">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="#" class="text-3xl font-bold text-orange-500 brand-font">BHG</a>
+            <div class="hidden lg:flex space-x-8">
+                <a href="#" class="text-gray-300 hover:text-orange-500 transition font-medium">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-orange-500 transition font-medium">About</a>
+                <a href="projects.html" class="text-gray-300 hover:text-orange-500 transition font-medium">Projects</a>
+                <a href="sustainability.html"
+                    class="text-gray-300 hover:text-orange-500 transition font-medium">Sustainability</a>
+                <a href="contact.html" class="text-gray-300 hover:text-orange-500 transition font-medium">Contact</a>
+            </div>
+            <button class="lg:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
 
-	<!-- HERO SECTION -->
-	<section class="relative h-screen bg-cover bg-center"
-		style="background-image: url('images/roads-to-mines.jpg');">
-		<div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
-			<h1 class="text-5xl md:text-6xl font-bold text-orange-500 animate-fadeInUp">BHG ENERGY & MINING</h1>
-			<p class="text-xl mt-4 text-gray-300 animate-fadeInUp delay-300">UNEARTHING EXCELLENCE, DELIVERING VALUE</p>
-			<button
-				class="mt-6 px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-all duration-300 animate-fadeInUp delay-500">Explore
-				More</button>
-		</div>
-	</section>
+    <!-- HERO SECTION -->
+    <section class="relative h-screen bg-cover bg-center" style="background-image: url('images/mine-landscape.avif');">
+        <div class="absolute inset-0 hero-gradient flex flex-col justify-center items-center text-center px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fadeInUp">BHG ENERGY & MINERALS</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-fadeInUp delay-200">UNEARTHING EXCELLENCE,
+                    DELIVERING VALUE</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fadeInUp delay-300">
+                    <a href="#projects"
+                        class="px-8 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-orange-500/30">
+                        Our Projects
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-3 border-2 border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 font-medium text-lg">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-10 animate-float">
+                <a href="#about" class="text-white">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
-	<!-- ABOUT SECTION -->
-	<section class="py-16 px-6 bg-gray-800">
-		<div class="max-w-6xl mx-auto text-center">
-			<h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">ABOUT US</h2>
-			<p class="text-gray-300 text-lg animate-fadeInUp delay-200">We are committed to safe, sustainable, and
-				efficient
-				mineral extraction, backed by years of expertise and industry innovation.</p>
-		</div>
-	</section>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 px-6 bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-orange-400 mb-4 animate-fadeInUp">ABOUT BHG</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto animate-fadeInUp delay-200">
+                    BHG Energy and Minerals Limited is a leading exploration company dedicated to the responsible and
+                    sustainable extraction of mineral resources in Tanzania.
+                </p>
+            </div>
 
-	<!-- OPERATIONS SECTION -->
-	<section class="py-16 px-6 bg-gray-900">
-		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-			<img src="images/ore-hauriers.avif" class="rounded-lg shadow-xl" alt="Operations">
-			<div>
-				<h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">OPERATIONS</h2>
-				<p class="text-gray-300 text-lg animate-fadeInUp delay-200">From exploration to export, we manage the
-					full cycle
-					of mineral operations with top-tier equipment and expert teams.</p>
-			</div>
-		</div>
-	</section>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-8 rounded-xl shadow-lg animate-fadeInUp">
+                    <div class="text-orange-400 text-4xl mb-4">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Our Mission</h3>
+                    <p class="text-gray-300">
+                        To unlock the potential of Tanzania's mineral resources through advanced exploration techniques
+                        and sustainable practices.
+                    </p>
+                </div>
 
-	<!-- SUSTAINABILITY SECTION -->
-	<section class="py-16 px-6 bg-gray-800">
-		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-			<div>
-				<h2 class="text-3xl font-bold text-orange-400 mb-4 animate-fadeInUp">SUSTAINABILITY</h2>
-				<p class="text-gray-300 text-lg animate-fadeInUp delay-200">We invest in environmental conservation and
-					community empowerment to ensure mining benefits all stakeholders responsibly.</p>
-			</div>
-			<img src="images/mining-rig-through-a-turnel.jpg" class="rounded-lg shadow-xl" alt="Sustainability">
-		</div>
-	</section>
-	<div class="max-w-6xl mx-auto px-4 py-12">
-		<!-- Section Heading -->
-		<h1 class="text-3xl font-bold text-white mb-6">Sustainability</h1>
+                <div class="bg-gray-700 p-8 rounded-xl shadow-lg animate-fadeInUp delay-200">
+                    <div class="text-orange-400 text-4xl mb-4">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Our Vision</h3>
+                    <p class="text-gray-300">
+                        To be Tanzania's premier energy and minerals company, delivering innovative solutions in
+                        exploration and extraction.
+                    </p>
+                </div>
 
-		<!-- Content Container -->
-		<div class="flex flex-col md:flex-row gap-8">
-			<!-- Text Content -->
-			<div class="flex-1">
-				<p class="text-white mb-6 text-lg leading-relaxed animate-fadeInUp">
-					BHG Energy & minerals under value-based principles of excellence, personal accountability,
-					integrity and social and environmental responsibility. Our commitment to responsible exploration and
-					mine development underlies our strategic vision, striving to ensure that social and economic
-					benefits are shared widely through community enhancement initiatives and stakeholder agreements with
-					host communities, local entrepreneurs and employees.
-				</p>
+                <div class="bg-gray-700 p-8 rounded-xl shadow-lg animate-fadeInUp delay-300">
+                    <div class="text-orange-400 text-4xl mb-4">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Our Values</h3>
+                    <p class="text-gray-300">
+                        Sustainability, Innovation, Integrity, and Collaboration guide every aspect of our operations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<!-- Divider -->
-				<div class="border-t border-gray-200 my-6"></div>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 px-6 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-orange-400 mb-4">OUR PROJECTS</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                    BHG's portfolio spans across Tanzania, focusing on strategic mineral resources for the green energy
+                    transition.
+                </p>
+            </div>
 
-				<!-- Buttons -->
-				<div class="flex flex-col sm:flex-row gap-4">
-					<a href="#"
-						class="px-6 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition-colors text-center">
-						View Latest Report
-					</a>
-					<a href="#"
-						class="px-6 py-2 border border-blue-600 text-blue-600 font-medium rounded hover:bg-blue-50 transition-colors text-center">
-						Learn More →
-					</a>
-				</div>
-			</div>
+            <!-- Projects Gallery -->
+            <div class="splide mb-16" aria-label="BHG Projects Gallery">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
+                                <img src="images/mineral-detection.jpeg" alt="Mpanda Project" class="w-full h-64 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Mpanda Project</h3>
+                                    <p class="text-gray-300 mb-4">Nickel, Gold, Lead exploration across 800km² in
+                                        Western Tanzania.</p>
+                                    <a href="#" class="text-orange-400 hover:text-orange-300 font-medium">Learn More
+                                        →</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
+                                <img src="images/mine-site-excavator.jpeg" alt="Katavi Project"
+                                    class="w-full h-64 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Katavi Mpanda</h3>
+                                    <p class="text-gray-300 mb-4">Multi-mineral exploration in Tanzania's mineral-rich
+                                        west.</p>
+                                    <a href="#" class="text-orange-400 hover:text-orange-300 font-medium">Learn More
+                                        →</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
+                                <img src="images/mine-excavator-2.jpeg" alt="Mbwemkuru Gold"
+                                    class="w-full h-64 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Mbwemkuru Gold</h3>
+                                    <p class="text-gray-300 mb-4">Alluvial gold deposits with artisanal mining
+                                        potential.</p>
+                                    <a href="#" class="text-orange-400 hover:text-orange-300 font-medium">Learn More
+                                        →</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
+                                <img src="images/small-rocks-images.jpeg" alt="Mtandi Cement" class="w-full h-64 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Mtandi Cement</h3>
+                                    <p class="text-gray-300 mb-4">Limestone resources for Tanzania's construction boom.
+                                    </p>
+                                    <a href="#" class="text-orange-400 hover:text-orange-300 font-medium">Learn More
+                                        →</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-			<!-- Image Placeholder - Replace with your actual image -->
-			<div class="flex-1">
-				<img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-					alt="Sustainability in action" class="w-full h-auto rounded-lg object-cover shadow-md">
-			</div>
-		</div>
-	</div>
+            <div class="text-center">
+                <a href="projects.html"
+                    class="inline-block px-8 py-3 border-2 border-orange-500 text-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 font-medium text-lg">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
 
-	<section class="relative h-[1000px]">
-		<!-- MAP BACKGROUND -->
-		<div id="tanzania-map" class="absolute inset-0"></div>
+    <!-- MINERALS SECTION -->
+    <section class="py-20 px-6 bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-orange-400 mb-4">MINERALS WE EXPLORE</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                    From battery metals to industrial minerals, BHG targets resources critical to Tanzania's development
+                    and the global energy transition.
+                </p>
+            </div>
 
-		<!-- FOREGROUND MINE LIST -->
-		<div class="relative max-w-4xl mx-auto mt-[-800px] py-20 px-6 text-white">
-			<h2 class="text-3xl font-bold text-orange-400 mb-6">Our Mines</h2>
-			<ul id="mine-list" class="space-y-4 text-lg">
-				<li data-name="Bulyanhulu Gold Mine" data-lat="-3.3869" data-lng="31.7167"
-					data-desc="Located in Shinyanga Region. Underground mine.">
-					<span class="hover:underline cursor-pointer">Katavi Mpanda Projects</span>
-				</li>
-				<li data-name="North Mara Gold Mine" data-lat="-1.5110" data-lng="34.4211"
-					data-desc="Open-pit mine in Tarime.">
-					<span class="hover:underline cursor-pointer">Mbwemkuru Alluvial Gold</span>
-				</li>
-				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
-					data-desc="One of the largest gold mines in Africa.">
-					<span class="hover:underline cursor-pointer">Mpanda Project Finalisation</span>
-				</li>
-				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
-					data-desc="One of the largest gold mines in Africa.">
-					<span class="hover:underline cursor-pointer">Mtandi Cement and Clinker Project</span>
-				</li>
-				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
-					data-desc="One of the largest gold mines in Africa.">
-					<span class="hover:underline cursor-pointer">Matapwa Pazzolana</span>
-				</li>
-				<li data-name="Geita Gold Mine" data-lat="-2.8722" data-lng="32.2306"
-					data-desc="One of the largest gold mines in Africa.">
-					<span class="hover:underline cursor-pointer">Limestone Kitumbini PMLs</span>
-				</li>
-			</ul>
-		</div>
-	</section>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Nickel</h3>
+                    <p class="text-gray-300">Critical for EV batteries and stainless steel.</p>
+                </div>
 
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Gold</h3>
+                    <p class="text-gray-300">Exploration across primary and alluvial deposits.</p>
+                </div>
 
-	<!-- FOOTER -->
-	<footer class="bg-gray-900 text-gray-300 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-7xl mx-auto">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-				<!-- Company Info -->
-				<div class="space-y-4">
-					<div class="flex items-center">
-						<span class="text-3xl font-bold text-amber-500">BHG</span>
-						<span class="ml-2 text-sm font-semibold uppercase text-white">ENERGY AND MINERALS</span>
-					</div>
-					<p class="italic text-gray-400">"UNEARTHING EXCELLENCE, DELIVERING VALUE"</p>
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Copper</h3>
+                    <p class="text-gray-300">Essential for electrification and construction.</p>
+                </div>
 
-					<div class="flex space-x-4 pt-2">
-						<a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
-							<i class="fab fa-linkedin-in text-lg"></i>
-						</a>
-						<a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
-							<i class="fab fa-twitter text-lg"></i>
-						</a>
-						<a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
-							<i class="fab fa-facebook-f text-lg"></i>
-						</a>
-					</div>
-				</div>
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-car-battery"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Graphite</h3>
+                    <p class="text-gray-300">Key component in lithium-ion batteries.</p>
+                </div>
 
-				<!-- Quick Links -->
-				<div class="space-y-4">
-					<h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Quick Links</h3>
-					<ul class="space-y-2">
-						<li><a href="#our-story" class="hover:text-amber-500 transition-colors">Our Story</a></li>
-						<li><a href="#mission-vision" class="hover:text-amber-500 transition-colors">Mission &
-								Vision</a></li>
-						<li><a href="#core-services" class="hover:text-amber-500 transition-colors">Services</a></li>
-						<li><a href="#our-projects" class="hover:text-amber-500 transition-colors">Projects</a></li>
-						<li><a href="#our-team" class="hover:text-amber-500 transition-colors">Our Team</a></li>
-					</ul>
-				</div>
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Gypsum</h3>
+                    <p class="text-gray-300">For construction and agricultural applications.</p>
+                </div>
 
-				<!-- Services -->
-				<div class="space-y-4">
-					<h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Our Services</h3>
-					<ul class="space-y-2">
-						<li><a href="#" class="hover:text-amber-500 transition-colors">Energy Resources</a></li>
-						<li><a href="#" class="hover:text-amber-500 transition-colors">Mineral Exploration</a></li>
-						<li><a href="#" class="hover:text-amber-500 transition-colors">Surveying Services</a></li>
-						<li><a href="#" class="hover:text-amber-500 transition-colors">Fieldwork</a></li>
-						<li><a href="#" class="hover:text-amber-500 transition-colors">Mapping Solutions</a></li>
-					</ul>
-				</div>
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Coal</h3>
+                    <p class="text-gray-300">Supporting Tanzania's energy needs.</p>
+                </div>
 
-				<!-- Contact -->
-				<div class="space-y-4">
-					<h3 class="text-lg font-semibold text-white border-b border-amber-500 pb-2">Contact Us</h3>
-					<address class="not-italic space-y-3">
-						<div class="flex items-start">
-							<i class="fas fa-map-marker-alt mt-1 mr-3 text-amber-500"></i>
-							<p>Tours drive, Mosasani Peninsula<br>Dor es salaam</p>
-						</div>
-						<div class="flex items-center">
-							<i class="fas fa-phone mr-3 text-amber-500"></i>
-							<p>+255 755530058</p>
-						</div>
-						<div class="flex items-center">
-							<i class="fas fa-envelope mr-3 text-amber-500"></i>
-							<a href="mailto:tumbo@bhg.co.tz"
-								class="hover:text-amber-500 transition-colors">tumbo@bhg.co.tz</a>
-						</div>
-						<div class="flex items-center">
-							<i class="fas fa-globe mr-3 text-amber-500"></i>
-							<a href="https://www.bhg.co.tz" target="_blank"
-								class="hover:text-amber-500 transition-colors">www.bhg.co.tz</a>
-						</div>
-					</address>
-				</div>
-			</div>
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Pozzolana</h3>
+                    <p class="text-gray-300">Sustainable cement additive.</p>
+                </div>
 
-			<!-- Bottom Bar -->
-			<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-				<p class="text-sm text-gray-500 mb-4 md:mb-0">&copy; 2025 BHG Energy and Minerals. All rights
-					reserved.</p>
-				<div class="flex space-x-4">
-					<a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Privacy Policy</a>
-					<a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Terms of
-						Service</a>
-					<a href="#" class="text-sm text-gray-500 hover:text-amber-500 transition-colors">Sitemap</a>
-				</div>
-			</div>
-		</div>
-	</footer>
+                <div class="mineral-card bg-gray-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Mica</h3>
+                    <p class="text-gray-300">For electronics and cosmetics industries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<!-- JSVectorMap Scripts --><!-- JSVectorMap CSS & JS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/css/jsvectormap.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/js/jsvectormap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/maps/world.min.js"></script>
+    <!-- SUSTAINABILITY SECTION -->
+    <section class="py-4 px-6 bg-gray-900">
+        <div class="max-w-7xl mx-auto grid gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <h2 class="text-4xl font-bold text-orange-400 mb-6">SUSTAINABLE MINING PRACTICES</h2>
+                <div class="w-24 h-1 bg-orange-500 mb-6"></div>
+                <p class="text-xl text-gray-300 mb-6">
+                    BHG Energy & Minerals operates under value-based principles of excellence, personal accountability,
+                    integrity and social and environmental responsibility.
+                </p>
+                <p class="text-gray-300 mb-8">
+                    Our commitment to responsible exploration and mine development underlies our strategic vision,
+                    striving to ensure that social and economic benefits are shared widely through community enhancement
+                    initiatives and stakeholder agreements with host communities, local entrepreneurs and employees.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#"
+                        class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition font-medium">
+                        Sustainability Report
+                    </a>
+                    <a href="#"
+                        class="px-6 py-3 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white transition font-medium">
+                        Community Initiatives
+                    </a>
+                </div>
+            </div>
 
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			const map = new jsVectorMap({
-				selector: "#tanzania-map",
-				map: "world",
-				zoomButtons: true,
-				selectedRegions: ['TZ'],
-				markers: [
-					{
-						name: "Bulyanhulu Gold Mine",
-						coords: [-3.3869, 31.7167],
-						info: "Underground gold mine in Shinyanga Region. Owned by Barrick Gold. Opened in 2001."
-					},
-					{
-						name: "North Mara Gold Mine",
-						coords: [-1.5110, 34.4211],
-						info: "Located in Tarime District. Open-pit and underground operations. Known for significant reserves."
-					},
-					{
-						name: "Geita Gold Mine",
-						coords: [-2.8722, 32.2306],
-						info: "One of Africa’s biggest gold mines. Operated by AngloGold Ashanti. Produces over 500k oz annually."
-					}
-				],
+            <!-- Masonry Gallery Snippet -->
+            <div class="container mx-auto px-4 py-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="masonry-gallery">
+                    <!-- Gallery Item 1 -->
+                    <div
+                        class="relative group overflow-hidden rounded-lg shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <img src="images/mine-site.avif" alt="Open Pit Mine"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div
+                                class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-white">Mpanda Project</h3>
+                                <p class="text-gray-300 mt-2">Our flagship nickel and gold exploration site in Western
+                                    Tanzania</p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Gallery Item 2 -->
+                    <div
+                        class="relative group overflow-hidden rounded-lg shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <img src="images/120-grames-gold.jpeg" alt="Mineral Sample"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div
+                                class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-white">Refined Gold 120G</h3>
+                                <p class="text-gray-300 mt-2">Weighing our Gold samples after refinery</p>
+                            </div>
+                        </div>
+                    </div>
 
-				markerStyle: {
-					initial: {
-						fill: "#f97316", // Tailwind orange-500
-						stroke: "#fff",
-						r: 7
-					}
-				},
-				regionStyle: {
-					initial: {
-						fill: "#4b5563", // Tailwind gray-700
-						stroke: "#1f2937"
-					},
-					selected: {
-						fill: "#f97316" // Highlight Tanzania
-					}
-				},
-				zoomOnScroll: false,
-				focusOn: {
-					region: 'TZ',
-					animate: true
-				}
-			});
+                    <!-- Gallery Item 3 -->
+                    <div
+                        class="relative group overflow-hidden rounded-lg shadow-xl transition-all duration-300 hover:shadow-2xl sm:col-span-2">
+                        <img src="images/mine-excavator-2.jpeg" alt="Mining Operation"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div
+                                class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-white">Sustainable Operations</h3>
+                                <p class="text-gray-300 mt-2">Modern mining techniques with minimal environmental impact
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Gallery Item 4 -->
+                    <div
+                        class="relative group overflow-hidden rounded-lg shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <img src="images/ore-hauriers.avif" alt="Transport Fleet"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div
+                                class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-white">Transport Fleet</h3>
+                                <p class="text-gray-300 mt-2">Our modern ore hauling vehicles ensure efficient
+                                    operations</p>
+                            </div>
+                        </div>
+                    </div>
 
-			const navbar = document.querySelector('.navbar');
-			window.addEventListener('scroll', () => {
-				if (window.scrollY > 50) {
-					navbar.classList.add('navbar-scrolled');
-				} else {
-					navbar.classList.remove('navbar-scrolled');
-				}
-			});
-		});
-	</script>
+                    <!-- Gallery Item 5 -->
+                    <div
+                        class="relative group overflow-hidden rounded-lg shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <img src="images/mining-rig-through-a-tunnel.jpg" alt="Underground Drilling"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div
+                                class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-white">Underground Operations</h3>
+                                <p class="text-gray-300 mt-2">Precision drilling in our underground exploration sites
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    </section>
 
+    <!-- MAP SECTION -->
+    <section class="relative bg-gray-800">
+        <!-- MAP BACKGROUND -->
+        <!-- PROJECT LOCATIONS -->
+        <div class="relative max-w-4xl mx-auto pt-32 pb-20 px-6 text-white">
+            <h2 class="text-4xl font-bold text-orange-400 mb-6">OUR PROJECT LOCATIONS</h2>
+            <div class="w-24 h-1 bg-orange-500 mb-6"></div>
+            <p class="text-gray-300 mb-8 text-lg">
+                BHG's projects are strategically located across Tanzania's most prospective mineral belts.
+            </p>
 
+            <div class="bg-gray-900 bg-opacity-80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+                <ul id="mine-list" class="space-y-4">
+                    <li data-name="Mpanda Project" data-lat="-6.3436" data-lng="31.0696" class="flex items-start">
+                        <div class="text-orange-400 mr-4 mt-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">Mpanda Project</h3>
+                            <p class="text-gray-300">Western Tanzania • Nickel, Gold, Lead</p>
+                        </div>
+                    </li>
+                    <li data-name="Katavi Mpanda Projects" data-lat="-6.5000" data-lng="31.0000"
+                        class="flex items-start">
+                        <div class="text-orange-400 mr-4 mt-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">Katavi Mpanda Projects</h3>
+                            <p class="text-gray-300">Katavi Region • Multi-mineral</p>
+                        </div>
+                    </li>
+                    <li data-name="Mbwemkuru Alluvial Gold" data-lat="-10.0000" data-lng="39.0000"
+                        class="flex items-start">
+                        <div class="text-orange-400 mr-4 mt-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">Mbwemkuru Alluvial Gold</h3>
+                            <p class="text-gray-300">Southern Tanzania • Placer Gold</p>
+                        </div>
+                    </li>
+                    <li data-name="Mtandi Cement Project" data-lat="-6.8000" data-lng="39.2000"
+                        class="flex items-start">
+                        <div class="text-orange-400 mr-4 mt-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">Mtandi Cement Project</h3>
+                            <p class="text-gray-300">Coastal Region • Limestone</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 px-6 bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-orange-400 mb-4">CONTACT US</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                    Interested in our projects or investment opportunities? Get in touch with our team.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-gray-700 p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+                            <select id="subject"
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white">
+                                <option value="">Select a subject</option>
+                                <option value="investment">Investment Inquiry</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="media">Media Inquiry</option>
+                                <option value="careers">Careers</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition font-medium">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="bg-gray-700 p-8 rounded-xl shadow-lg mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="text-orange-400 mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-white">Headquarters</h4>
+                                    <p class="text-gray-300">Toure Drive, Msasani Peninsula<br>Dar es Salaam, Tanzania
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-orange-400 mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-white">Phone</h4>
+                                    <p class="text-gray-300">+255 755 530 058</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-orange-400 mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-white">Email</h4>
+                                    <p class="text-gray-300">tumbo@bhg.co.tz</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-orange-400 mr-4 mt-1">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-white">Website</h4>
+                                    <p class="text-gray-300">www.bhg.co.tz</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-white mb-6">Connect With Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-orange-400 hover:bg-orange-500 hover:text-white transition">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-orange-400 hover:bg-orange-500 hover:text-white transition">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-orange-400 hover:bg-orange-500 hover:text-white transition">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-orange-400 hover:bg-orange-500 hover:text-white transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-3xl font-bold text-orange-500 brand-font">BHG</span>
+                        <span class="ml-2 text-sm font-semibold uppercase text-white">ENERGY AND MINERALS</span>
+                    </div>
+                    <p class="italic text-gray-400">"UNEARTHING EXCELLENCE, DELIVERING VALUE"</p>
+                    <p class="text-gray-400">
+                        Leading sustainable mineral exploration in Tanzania.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-orange-500 pb-2">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-orange-500 transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-orange-500 transition">About Us</a></li>
+                        <li><a href="projects.html" class="hover:text-orange-500 transition">Projects</a></li>
+                        <li><a href="sustainability.html" class="hover:text-orange-500 transition">Sustainability</a>
+                        </li>
+                        <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-orange-500 pb-2">Our Projects</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-orange-500 transition">Mpanda Project</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Katavi Mpanda</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Mbwemkuru Gold</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Mtandi Cement</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Matapwa Pozzolana</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white border-b border-orange-500 pb-2">Contact</h3>
+                    <address class="not-italic space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-orange-500"></i>
+                            <p>Toure Drive, Msasani Peninsula<br>Dar es Salaam, Tanzania</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-orange-500"></i>
+                            <p>+255 755 530 058</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-orange-500"></i>
+                            <a href="mailto:tumbo@bhg.co.tz"
+                                class="hover:text-orange-500 transition">tumbo@bhg.co.tz</a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">&copy; 2025 BHG Energy and Minerals Limited. All rights
+                    reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-sm text-gray-500 hover:text-orange-500 transition">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-orange-500 transition">Terms of Service</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-orange-500 transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Libraries -->
+    <!-- Splide.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <!-- JSVectorMap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/js/jsvectormap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.4.3/maps/world.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize Splide sliders
+            new Splide('.splide', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '2rem',
+                breakpoints: {
+                    1024: {
+                        perPage: 2,
+                    },
+                    768: {
+                        perPage: 1,
+                    }
+                }
+            }).mount();
+
+            function adjustMasonry() {
+                const gallery = document.getElementById('masonry-gallery');
+                const items = gallery.children;
+
+                // Reset all heights to auto
+                for (let item of items) {
+                    item.style.height = 'auto';
+                }
+
+                // For screens larger than sm
+                if (window.innerWidth >= 640) {
+                    // Make items in the same row equal height
+                    const rowMap = new Map();
+
+                    for (let i = 0; i < items.length; i++) {
+                        const rect = items[i].getBoundingClientRect();
+                        const row = Math.floor(rect.top);
+
+                        if (!rowMap.has(row)) {
+                            rowMap.set(row, []);
+                        }
+                        rowMap.get(row).push(items[i]);
+                    }
+
+                    // Set equal height for items in the same row
+                    for (let [row, rowItems] of rowMap) {
+                        let maxHeight = 0;
+
+                        // Find max height in row
+                        for (let item of rowItems) {
+                            const height = item.getBoundingClientRect().height;
+                            if (height > maxHeight) maxHeight = height;
+                        }
+
+                        // Apply max height to all items in row
+                        for (let item of rowItems) {
+                            item.style.height = maxHeight + 'px';
+                        }
+                    }
+                }
+            }
+
+            // Initial adjustment
+            adjustMasonry();
+
+            // Adjust on window resize
+            window.addEventListener('resize', adjustMasonry);
+
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Project location hover effects
+            const mineItems = document.querySelectorAll('#mine-list li');
+            mineItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    const name = this.getAttribute('data-name');
+                    const lat = parseFloat(this.getAttribute('data-lat'));
+                    const lng = parseFloat(this.getAttribute('data-lng'));
+
+                    // Highlight marker on map
+                    map.setFocus({
+                        region: null,
+                        lat: lat,
+                        lng: lng,
+                        animate: true
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

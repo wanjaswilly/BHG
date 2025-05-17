@@ -527,18 +527,18 @@
                         geometry: { type: "Point", coordinates: [31.0333, -6.4667] }
                     },
                     {
+                        id: "mpanda",
+                        title: "Mpanda Project Finalisation",
+                        name: "MPANDA",
+                        description: "Gold project in final development phase",
+                        geometry: { type: "Point", coordinates: [31.9654, -6.3436] }
+                    },
+                    {
                         id: "mbwemkuru",
                         title: "Mbwemkuru Alluvial Gold",
                         name: "MBWEMKURU",
                         description: "The Mbwemkuru project focuses on \nalluvial ngold deposits in the \nRuvuma Region of southern Tanzania, \nutilizing environmentally responsible mining techniques \nto recover gold from river sediments.",
                         geometry: { type: "Point", coordinates: [31.3333, -7.9167] }
-                    },
-                    {
-                        id: "mpanda",
-                        title: "Mpanda Project Finalisation",
-                        name: "MPANDA",
-                        description: "Gold project in final development phase",
-                        geometry: { type: "Point", coordinates: [31.0694, -6.3436] }
                     },
                     {
                         id: "mtandi",
@@ -602,7 +602,7 @@
                                     const circle = bullet.get("sprite").children.getIndex(0);
                                     if (item.id === mineId) {
                                         circle.set("fill", am5.color(0xf59e0b)); // lighter orange
-                                        circle.set("radius", 10);
+                                        circle.set("radius", 5);
                                     } else {
                                         circle.set("fill", am5.color(0xf97316)); // original orange
                                         circle.set("radius", 8);
