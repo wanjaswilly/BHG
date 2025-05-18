@@ -6,56 +6,170 @@
     <title>About Us - BHG Energy And Mining</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Splide.js for galleries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <style>
+        /* Custom Fonts */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animations */
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
         .animate-fadeInUp {
             animation: fadeInUp 1s ease-out forwards;
         }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
         /* delay utilities */
-        .delay-200 { animation-delay: 0.4s; }
-        .delay-300 { animation-delay: 0.5s; }
-        .delay-500 { animation-delay: 0.6s; }
-        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
         /* Navigation Bar Style */
         .navbar {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.5s ease;
         }
+
         .navbar-scrolled {
-            background-color: #1f2937;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-        
-        /* Hero Section */
-        .about-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1605100804763-247f67b3557e') no-repeat center center;
-            background-size: cover;
+
+        /* Hero Gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 24, 39, 0.8) 0%, rgba(124, 58, 237, 0.4) 100%);
+        }
+
+        /* Mineral Cards */
+        .mineral-card {
+            transition: all 0.3s ease;
+        }
+
+        .mineral-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f97316;
+            border-radius: 4px;
+        }
+
+        /* Map Container */
+        #tanzania-map {
+            height: 1000px;
+            width: 100%;
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* Custom styles to enhance the masonry effect */
+        #masonry-gallery {
+            display: grid;
+            grid-auto-rows: minmax(200px, auto);
+        }
+
+        @media (min-width: 640px) {
+            #masonry-gallery {
+                grid-auto-rows: minmax(250px, auto);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #masonry-gallery {
+                grid-auto-rows: minmax(300px, auto);
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-gray-900 text-white">
     <!-- NAVIGATION BAR -->
-    <nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 bg-transparent">
-        <div class="flex items-center justify-between">
-            <a href="index.html" class="text-3xl font-bold text-orange-500">BHG</a>
-            <ul class="flex space-x-8 text-gray-300">
-                <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
-                <li><a href="about.html" class="text-orange-500 font-medium">About</a></li>
-                <li><a href="mines.html" class="hover:text-orange-500 transition">Mines</a></li>
-                <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
-            </ul>
+    <nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 lg:px-12 bg-transparent">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="#" class="text-3xl font-bold text-orange-500 brand-font">BHG</a>
+            <div class="hidden lg:flex space-x-8">
+                <a href="#" class="text-gray-300 hover:text-orange-500 transition font-medium">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-orange-500 transition font-medium">About</a>
+                <a href="projects.html" class="text-gray-300 hover:text-orange-500 transition font-medium">Projects</a>
+                <a href="sustainability.html"
+                    class="text-gray-300 hover:text-orange-500 transition font-medium">Sustainability</a>
+                <a href="contact.html" class="text-gray-300 hover:text-orange-500 transition font-medium">Contact</a>
+            </div>
+            <button class="lg:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
         </div>
     </nav>
 
