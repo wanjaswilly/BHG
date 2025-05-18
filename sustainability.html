@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability | BHG Energy & Minerals</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Fonts */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* delay utilities */
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        /* Navigation Bar Style */
+        .navbar {
+            transition: all 0.5s ease;
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 24, 39, 0.8) 0%, rgba(124, 58, 237, 0.4) 100%);
+        }
+
+        /* Mineral Cards */
+        .mineral-card {
+            transition: all 0.3s ease;
+        }
+
+        .mineral-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f97316;
+            border-radius: 4px;
+        }
+
+        /* Map Container */
+        #tanzania-map {
+            height: 1000px;
+            width: 100%;
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* Custom styles to enhance the masonry effect */
+        #masonry-gallery {
+            display: grid;
+            grid-auto-rows: minmax(200px, auto);
+        }
+
+        @media (min-width: 640px) {
+            #masonry-gallery {
+                grid-auto-rows: minmax(250px, auto);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #masonry-gallery {
+                grid-auto-rows: minmax(300px, auto);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar fixed w-full top-0 left-0 z-50 py-4 px-6 lg:px-12 bg-transparent">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="#" class="text-3xl font-bold text-orange-500 brand-font">BHG</a>
+            <div class="hidden lg:flex space-x-8">
+                <a href="#" class="text-gray-300 hover:text-orange-500 transition font-medium">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-orange-500 transition font-medium">About</a>
+                <a href="projects.html" class="text-gray-300 hover:text-orange-500 transition font-medium">Projects</a>
+                <a href="sustainability.html"
+                    class="text-gray-300 hover:text-orange-500 transition font-medium">Sustainability</a>
+                <a href="contact.html" class="text-gray-300 hover:text-orange-500 transition font-medium">Contact</a>
+            </div>
+            <button class="lg:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>  
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-96" style="background-image: url('images/sustainability-hero.jpg');">
+        <div class="absolute inset-0 hero-gradient flex items-center justify-center text-center px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Sustainable Mining Practices</h1>
+                <p class="text-xl text-gray-200">Committed to responsible resource development that benefits communities and preserves the environment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Intro -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Sustainability Framework</h2>
+            <div class="w-20 h-1 bg-green-500 mx-auto mb-6"></div>
+            <p class="text-lg text-gray-100 max-w-4xl mx-auto">
+                At BHG Energy & Minerals, sustainability is integrated into every aspect of our operations. We go beyond compliance to implement innovative solutions that minimize environmental impact while maximizing social and economic benefits.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-violet-950 p-8 rounded-lg shadow-md text-center impact-card transition duration-300">
+                <div class="text-green-500 text-5xl mb-4">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-100 mb-3">Environmental Stewardship</h3>
+                <p class="text-gray-50">
+                    Implementing cutting-edge technologies to reduce our ecological footprint and promote biodiversity conservation.
+                </p>
+            </div>
+            <div class="bg-violet-950 p-8 rounded-lg shadow-md text-center impact-card transition duration-300">
+                <div class="text-green-500 text-5xl mb-4">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-100 mb-3">Community Partnership</h3>
+                <p class="text-gray-50">
+                    Working hand-in-hand with local communities to create shared value and sustainable development opportunities.
+                </p>
+            </div>
+            <div class="bg-violet-950 p-8 rounded-lg shadow-md text-center impact-card transition duration-300">
+                <div class="text-green-500 text-5xl mb-4">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-100 mb-3">Clean Energy Transition</h3>
+                <p class="text-gray-50">
+                    Providing critical minerals for renewable energy technologies while reducing our own carbon emissions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental Initiatives -->
+    <section class="py-16 bg-indigo-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-grey-900 mb-4">Environmental Initiatives</h2>
+                <div class="w-20 h-1 bg-green-500 mx-auto mb-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="relative pl-12 mb-8 timeline-item">
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">Water Conservation</h3>
+                        <p class="text-gray-100">
+                            Implementing closed-loop water systems that recycle 85% of process water across our operations, significantly reducing freshwater consumption.
+                        </p>
+                    </div>
+                    <div class="relative pl-12 mb-8 timeline-item">
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">Land Rehabilitation</h3>
+                        <p class="text-gray-200">
+                            Progressive rehabilitation programs that restore mined areas to stable, productive ecosystems, often exceeding regulatory requirements.
+                        </p>
+                    </div>
+                    <div class="relative pl-12 timeline-item">
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">Emissions Reduction</h3>
+                        <p class="text-gray-200">
+                            Transitioning to hybrid and electric mining vehicles, with a goal of 40% reduction in greenhouse gas emissions by 2027.
+                        </p>
+                    </div>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-xl">
+                    <img src="images/mine-landscape.avif" alt="Environmental Protection" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Impact -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Community Impact</h2>
+            <div class="w-20 h-1 bg-green-500 mx-auto mb-6"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-sky-800 rounded-lg shadow-md overflow-hidden">
+                <img src="images/steel-rods.jpg" alt="Education Program" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">Education Programs</h3>
+                    <p class="text-gray-50 mb-4">
+                        Funding scholarships and building schools to serve communities near our operations, with 1,200 students supported annually.
+                    </p>
+                    <a href="#" class="text-green-400 font-medium hover:text-green-500">Learn more →</a>
+                </div>
+            </div>
+            <div class="bg-sky-800 rounded-lg shadow-md overflow-hidden">
+                <img src="images/mineral-detection.jpeg" alt="Local Business" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">Local Procurement</h3>
+                    <p class="text-gray-50 mb-4">
+                        68% of our procurement budget goes to Tanzanian-owned businesses, creating sustainable economic opportunities.
+                    </p>
+                    <a href="#" class="text-green-400 font-medium hover:text-green-500">Learn more →</a>
+                </div>
+            </div>
+            <div class="bg-sky-800 rounded-lg shadow-md overflow-hidden">
+                <img src="images/roads-to-mines.jpg" alt="Healthcare Initiative" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">Healthcare Initiatives</h3>
+                    <p class="text-gray-50 mb-4">
+                        Operating mobile clinics that have provided free healthcare to over 15,000 community members in remote areas.
+                    </p>
+                    <a href="#" class="text-green-400 font-medium hover:text-green-500">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Report -->
+    <section class="py-16 bg-green-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">2025 Sustainability Report</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto">
+                Download our comprehensive sustainability report to learn about our progress, goals, and commitments to responsible mining.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="px-6 py-3 bg-white text-green-600 border-white rounded-lg font-medium hover:bg-orange-500 hover:text-white transition">
+                    Download Report (PDF)
+                </a>
+                <a href="#" class="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-orange-500 transition">
+                    View Online Version
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Recognition -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Awards & Recognition</h2>
+            <div class="w-20 h-1 bg-green-500 mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Our sustainability efforts have been recognized by leading industry organizations and government agencies.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 items-center items-center">
+            <div class="flex justify-center">
+                <img src="images/mine-landscape.avif" alt="Tanzania Green Business Award" class="h-20 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+            <div class="flex justify-center">
+                <img src="images/steel-rods.jpg" alt="African Mining Sustainability Standard" class="h-20 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+            <div class="flex justify-center">
+                <img src="images/small-rocks-images.jpeg" alt="ISO 14001 Certified" class="h-20 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+            <div class="flex justify-center">
+                <img src="images/hand-holding-an-ore.jpg" alt="Responsible Mining Initiative" class="h-20 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Join Our Sustainability Journey</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto">
+                We welcome partnerships with organizations and individuals who share our commitment to sustainable development.
+            </p>
+            <a href="contact.html" class="inline-block px-8 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">
+                Get in Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">BHG Energy & Minerals</h3>
+                    <p class="mb-4">
+                        Unearthing Excellence, Delivering Value through sustainable mining practices.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="projects.html" class="hover:text-white">Projects</a></li>
+                        <li><a href="sustainability.html" class="hover:text-white">Sustainability</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Sustainability</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Environmental Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Community Programs</a></li>
+                        <li><a href="#" class="hover:text-white">Sustainability Reports</a></li>
+                        <li><a href="#" class="hover:text-white">Ethical Sourcing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <address class="not-italic">
+                        <p class="mb-2">Toure Drive, Msasani Peninsula</p>
+                        <p class="mb-2">Dar es Salaam, Tanzania</p>
+                        <p class="mb-2">Phone: +255 755 530 058</p>
+                        <p class="mb-2">Email: info@bhg.co.tz</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
+                <p>&copy; 2025 BHG Energy & Minerals Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for timeline items when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'all 0.5s ease-out';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
